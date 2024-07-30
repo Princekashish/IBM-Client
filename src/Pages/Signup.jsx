@@ -31,11 +31,9 @@ function Signup() {
           "Content-Type": "application/json",
         },
       });
-      console.log("Signup successful ppr", response.data);
+      console.log("Signup successful", response.data);
       const result = response.data;
-
-      console.log("Signup response:", result);
-
+  
       if (result.user && result.token) {
         handleSucess("Signup successful! Redirecting...");
         setTimeout(() => {
@@ -47,11 +45,12 @@ function Signup() {
         handlError("Signup failed. Please try again.");
       }
     } catch (error) {
-      // Handle network or other errors
+      // Handle network
       console.error("Error during signup:", error);
       handlError("Something went wrong");
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center h-[60vh] bg-[#EEF7F8]">
