@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
-export const handleSucess = (message) => {
-  toast.success(message);
+export const handleSucess = (msg) => {
+  toast.success(msg,{
+    position:"top-right"
+  });
 };
 export const handlError = (msg) => {
   toast.error(msg, {

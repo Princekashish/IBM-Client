@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import {Contact, Donation, Education, Login,Landingpage, Signup} from "./Pages/index.js"
 import Fundraisers from './Components/Fundraiser.jsx'
+import 'react-toastify/ReactToastify.css'
 
 
 

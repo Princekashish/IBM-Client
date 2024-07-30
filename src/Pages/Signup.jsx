@@ -110,9 +110,6 @@ function Signup() {
           </div>
         </div>
       </div>
-      <button className="absolute top-4 left-4 text-black hover:underline">
-        &lt; Back
-      </button>
       <ToastContainer />
     </div>
   );
