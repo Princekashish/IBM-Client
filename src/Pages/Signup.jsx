@@ -25,7 +25,7 @@ function Signup() {
       return handlError("All field are required");
     }
     try {
-      const url = `http://localhost:3000/auth/v1/user/signup`;
+      const url = `https://ibm-server.onrender.com/auth/v1/user/signup`;
       const response = await axios.post(url, signup, {
         headers: {
           "Content-Type": "application/json",
