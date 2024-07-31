@@ -310,7 +310,7 @@ export default function Fundraisers() {
         )}
       </div>
       {/* fundraisers list */}
-      <div className="p-5  grid grid-cols-3 gap-10">
+      <div className="p-5  xl:grid xl:grid-cols-3 xl:gap-10">
         {filteredFundraisers.map((fundraiser) => (
           <div key={fundraiser.id} className="p-4 border rounded-lg mb-4">
             <h2 className="text-xl font-semibold">{fundraiser.name}</h2>
