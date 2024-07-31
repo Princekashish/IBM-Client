@@ -3,7 +3,8 @@ import { FaArrowLeft } from "react-icons/fa";
 import { blogbg, Educationbanner, gallery, image1 } from "../assets";
 import { Button } from "../Components";
 import { Link } from "react-router-dom";
-import Sponser from "../Components/Sponser";
+import Sponser from "../Components/Sponser/Sponserss";
+import ScrollTop from "../Components/Scrolltop/Scrolltop";
 
 function Education() {
   const Blog = [
@@ -35,6 +36,7 @@ function Education() {
 
   return (
     <div className="p-0 ">
+    <ScrollTop/>
       <div className="pt-4 pl-3">
         <Link to="/">
           <h1 className=" lg:text-xl text-sm font-semibold flex gap-2 items-center">

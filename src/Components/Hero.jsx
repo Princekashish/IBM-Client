@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import { Autoplay, Navigation, Scrollbar } from "swiper/modules";
+import ScrollTop from "./Scrolltop/Scrolltop";
 
 function Hero() {
   return (
-    <div id="home" className="font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[70vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row">
+    <div
+      id="home"
+      className="font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[70vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
+    >
+      <ScrollTop />
       <div>
         <div className="xl:flex xl:flex-col xl:justify-center xl:items-start xl:gap-5 ">
           <h1 className=" text-black  font-poppins text-4xl lg:text-6xl font-bold text-center lg:text-start  lg:tracking-wider">
@@ -56,22 +60,42 @@ function Hero() {
         >
           <div className="object-cover">
             <SwiperSlide className="flex items-center justify-center w-full ">
-              <img src="./pic4.png" alt="" className="h-[220px] md:h-[320px] rounded-xl" />
+              <img
+                src="./pic4.png"
+                alt=""
+                className="h-[220px] md:h-[320px] rounded-xl"
+              />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full  ">
-              <img src="./pic9.png" alt="" className="h-[220px] md:h-[320px] rounded-xl" />
+              <img
+                src="./pic9.png"
+                alt=""
+                className="h-[220px] md:h-[320px] rounded-xl"
+              />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full">
-              <img src="./pic3.png" alt="" className="h-[220px] md:h-[320px] rounded-xl" />
+              <img
+                src="./pic3.png"
+                alt=""
+                className="h-[220px] md:h-[320px] rounded-xl"
+              />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full">
-              <img src="./pic6.png" alt="" className="h-[220px] md:h-[320px] rounded-xl" />
+              <img
+                src="./pic6.png"
+                alt=""
+                className="h-[220px] md:h-[320px] rounded-xl"
+              />
             </SwiperSlide>
           </div>
         </Swiper>
       </div>
       <div className="hidden lg:block ">
-        <img src="./hero.png" alt="Hero" className="w-full h-auto object-cover" />
+        <img
+          src="./hero.png"
+          alt="Hero"
+          className="w-full h-auto object-cover"
+        />
       </div>
     </div>
   );

@@ -1,47 +1,116 @@
-import React from 'react';
+import React, { useState } from "react";
+import { handlError, handleSucess } from "../utils/tost";
+import { ToastContainer } from "react-toastify";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  // Handle change in input fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginInfo((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { email, password } = loginInfo;
+
+    // Validate input
+    if (!email || !password) {
+      return handlError("Email and password are required");
+    }
+
+    try {
+      const url = `https://ibm-server.onrender.com/auth/v1/user/login`;
+      const response = await axios.post(url, loginInfo, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = response.data;
+      console.log("Response from server:", result);
+
+      if (
+        (response.status === 200 || response.status === 201) &&
+        result.token
+      ) {
+        handleSucess("Login successful");
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("loggedInUser", result.user.username);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000); // Redirect after 1 second
+      } else {
+        handlError(result.message || "An error occurred");
+      }
+    } catch (err) {
+      console.error("Error during login:", err);
+      handlError("Something went wrong");
+    }
+  };
+
   return (
-    <div className="flex h-screen">
-      <div className="flex-1 flex items-center justify-center bg-orange-500 text-white">
-        <div className="text-center">
-          <h2 className="text-4xl mb-4">Welcome to Login</h2>
-          <p className="text-lg mb-6">Don't have an account?</p>
-          <button className="bg-white text-orange-500 py-2 px-6 rounded-full">Sign Up</button>
-        </div>
-      </div>
-      <div className="flex-1 flex items-center justify-center bg-gray-100">
-        <div className="w-full max-w-sm p-8 bg-white shadow-md rounded-lg">
-          <h2 className="text-2xl font-bold mb-6">LOG IN</h2>
-          <form>
-            <div className="mb-4">
-              <label className="block mb-2 text-gray-600">USERNAME</label>
-              <input
-                type="text" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Username"
-              />
-            </div>
-            <div className="mb-6">
-              <label className="block mb-2 text-gray-600">PASSWORD</label>
-              <input
-                type="password" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Password" />
-            </div>
+    <div className="flex flex-col items-center justify-center lg:h-[70vh] h-[80vh] bg-zinc-900 relative overflow-hidden">
+      <img
+        src="https://images.pexels.com/photos/7351644/pexels-photo-7351644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        alt="Background"
+        className="absolute inset-0 w-full lg:h-[70vh] h-[80vh] object-cover blur-sm pointer-events-none"
+      />
+      <div className="flex flex-col-reverse items-center justify-around w-full ">
+        <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5">
+          <h2 className="mb-6 text-2xl font-bold text-center ">LOG IN</h2>
+          <form onSubmit={handleLogin} className="flex flex-col gap-5">
+            <input
+              name="email"
+              type="email"
+              onChange={handleChange}
+              value={loginInfo.email}
+              placeholder="Email ID"
+              className="py-3  border-b-2  px-6 outline-none"
+            />
+            <input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              value={loginInfo.password}
+              placeholder="Password"
+              className="py-3  border-b-2  px-6 outline-none"
+            />
             <button
-              type="submit" className="w-full py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500">LOG IN
+              type="submit"
+              className="p-2 text-white bg-orange-500 hover:bg-orange-600 rounded-full"
+            >
+              LOGIN
             </button>
-            <div className="flex justify-between items-center mt-4">
-              <label className="flex items-center text-gray-600">
-                <input type="checkbox" className="mr-2" /> Remember me
-              </label>
-              <a href="#" className="text-orange-500">Forgot Password</a>
-            </div>
-            <div className="flex justify-center mt-6">
-              <a href="#" className="bg-gray-600 text-white rounded-full w-8 h-8 flex items-center justify-center mx-1">G</a>
-              <a href="#" className="bg-gray-600 text-white rounded-full w-8 h-8 flex items-center justify-center mx-1">F</a>
-              <a href="#" className="bg-gray-600 text-white rounded-full w-8 h-8 flex items-center justify-center mx-1">T</a>
-            </div>
           </form>
+          <div className="flex justify-start items-start text-white pt-5 text-xs gap-2">
+            <h1 className="text-black">Don’t have account? </h1>
+            <Link to={"/signup"} className="text-blue-600 cursor-pointer">
+              {" "}
+              Sign Up
+            </Link>
+          </div>
+        </div>
+        <div className=" text-white relative w-[420px] hidden lg:block">
+          <h1 className="text-lg font-medium">
+            <i>
+              Sustainable development means recognizing that we are stewards of
+              this planet and must work together to provide for future
+              generations. Ending hunger is a cornerstone of achieving true
+              sustainability.
+            </i>
+          </h1>
+          <p className="text-end text-xs text-blue-600 ">Howard G. Buffett</p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

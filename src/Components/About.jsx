@@ -1,5 +1,6 @@
 import React from "react";
-import Sponser from "./Sponser";
+import { Link } from "react-router-dom";
+import Sponserss from "../Components/Sponser/Sponserss";
 
 export default function About() {
   return (
@@ -37,10 +38,14 @@ export default function About() {
         </div>
       </div>
       {/* marque */}
-      <Sponser />
+      <Sponserss />
       {/* soliddaty pan */}
       <div className="mt-10  flex justify-center items-center xl:p-10 ">
-        <img src="./Solidarity-pana (2) 1.jpg" alt="" className="rounded-2xl "/>
+        <img
+          src="./Solidarity-pana (2) 1.jpg"
+          alt=""
+          className="rounded-2xl "
+        />
       </div>
       {/* banner2 */}
       <div>
@@ -49,9 +54,12 @@ export default function About() {
             You can contribute to provide a meal to the people with needs...!
           </h1>
           <div className="flex justify-center items-center gap-3 p-5">
-            <button className="bg-black text-white px-7 py-3 rounded-full border border-white capitalize outline-none focus:scale-110 hover:scale-110 transition">
+            <Link
+              to={"/volinteer"}
+              className="bg-black text-white px-7 py-3 rounded-full border border-white capitalize outline-none focus:scale-110 hover:scale-110 transition"
+            >
               Join Us as volunteer
-            </button>
+            </Link>
           </div>
         </div>
       </div>

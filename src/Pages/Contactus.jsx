@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { location, mail, phone } from "../assets";
-import { Button } from "../Components";
 import { Link } from "react-router-dom";
+import ScrollTop from "../Components/Scrolltop/Scrolltop";
 
 function Contactus() {
   const [formData, setFormData] = useState({
@@ -21,9 +21,8 @@ function Contactus() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (handleChange) {
       // Simulate form submission
-      console.log("Form data submitted:", formData);
       setFormSubmitted(true);
       // Reset form after submission
       setFormData({
@@ -55,6 +54,7 @@ function Contactus() {
 
   return (
     <div className="p-10 font-poppins">
+      <ScrollTop />
       <div>
         <Link to="/">
           <h1 className="lg:text-xl text-sm font-semibold flex gap-2 items-center">
@@ -142,10 +142,12 @@ function Contactus() {
                 className={`lg:mt-7 mt-2 p-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] xl:w-[454px] sm:w-[400px] w-full lg:h-[291px] h-[150px] `}
               ></textarea>
 
-              <Button
-                msg="Submit"
-                className="p-2 m-2 rounded-[6px] px-5 text-white"
-              />
+              <button
+                type="Submit"
+                className="p-2 m-2 rounded-[6px] px-5 text-white bg-orange-600"
+              >
+                Submit
+              </button>
             </form>
           </div>
           <div className="hidden xl:block xl:b">

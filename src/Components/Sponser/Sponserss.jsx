@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-function Sponser() {
+function Sponserss() {
     const marque = [
         { img: "./01.svg" },
         { img: "./02.svg" },
@@ -42,4 +42,4 @@ function Sponser() {
   );
 }
 
-export default Sponser;
+export default Sponserss;

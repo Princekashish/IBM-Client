@@ -1,32 +1,32 @@
 import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
+import ScrollTop from "./Scrolltop/Scrolltop";
+import { handleSucess } from "../utils/tost";
+import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Volunteer() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const [availability, setAvailability] = useState(new Date());
-  // currentdate
+  const [availability, setAvailability] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
-    // Set today's date as the default date
     const today = new Date().toISOString().split("T")[0];
     setAvailability(today);
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const volunteerDetails = {
-      name,
-      email,
-      phone,
-      location,
-      daysAvailable,
-    };
-    console.log("Volunteer Details: ", volunteerDetails);
-    alert("Volunteer details submitted!");
+    handleSucess("Volunteer details submitted!");
+    setTimeout(() => {
+      navigate('/');
+    }, 1000); 
+
   };
   return (
     <div className="min-h-screen bg-gray-100">
+    <ScrollTop/>
       <div className="relative overflow-hidden">
         <img
           src="https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -99,8 +99,8 @@ export default function Volunteer() {
               <button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded mt-4"
+                type="Submit"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white p-2 rounded mt-4"
               >
                 Submit
               </button>
@@ -108,6 +108,7 @@ export default function Volunteer() {
           </motion.div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

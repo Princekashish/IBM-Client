@@ -4,34 +4,34 @@ import { AiOutlineClose } from "react-icons/ai";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ScrollTop from "./Scrolltop/Scrolltop";
 
-
-const dummyFundraisers = [
-  {
-    id: 1,
-    name: "Hunger Relief in Delhi",
-    category: "Trending",
-    location: "Delhi",
-  },
-  {
-    id: 2,
-    name: "Feeding Bengaluru's Needy",
-    category: "Urgently Foods",
-    location: "Bengaluru",
-  },
-  {
-    id: 3,
-    name: "Support for Hyderabad's Hungry",
-    category: "Trending",
-    location: "Hyderabad",
-  },
-  {
-    id: 4,
-    name: "National Hunger Relief Fund",
-    category: "All Types",
-    location: "Delhi",
-  },
-];
+// const dummyFundraisers = [
+//   {
+//     id: 1,
+//     name: "Hunger Relief in Delhi",
+//     category: "Trending",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 2,
+//     name: "Feeding Bengaluru's Needy",
+//     category: "Urgently Foods",
+//     location: "Bengaluru",
+//   },
+//   {
+//     id: 3,
+//     name: "Support for Hyderabad's Hungry",
+//     category: "Trending",
+//     location: "Hyderabad",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+// ];
 
 export default function Fundraisers() {
   const [fundraisers, setFundraisers] = useState([]);
@@ -42,10 +42,21 @@ export default function Fundraisers() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("/api/fundraisers")
-      .then((response) => setFundraisers(response.data))
-      .catch((error) => console.error(error));
+    const fetchFundraisers = async () => {
+      try {
+        const response = await axios.get(
+          "https://ibm-server.onrender.com/api/fundraisers/"
+        );
+        const sortedFundraisers = response.data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setFundraisers(sortedFundraisers);
+      } catch (err) {
+        console.error("Error fetching fundraisers:", err);
+      }
+    };
+
+    fetchFundraisers();
   }, []);
 
   const Filterdata = () => {
@@ -77,7 +88,7 @@ export default function Fundraisers() {
     setSelectedLocation([]);
   };
 
-  const filteredFundraisers = dummyFundraisers.filter((fundraiser) => {
+  const filteredFundraisers = fundraisers.filter((fundraiser) => {
     return (
       (selectedCategory.length === 0 ||
         selectedCategory.includes(fundraiser.category)) &&
@@ -96,8 +107,15 @@ export default function Fundraisers() {
     }
   };
 
+  const formatDate = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString(undefined, options);
+  };
+
+
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
+    <ScrollTop/>
       {/* banner */}
       <div className='bg-[url("/poster.jpg")] bg-cover xl:bg-center bg-[10%] xl:h-[40vh] h-[32vh] bg-no-repeat flex justify-end xl:items-center p-5 xl:p-10'>
         <div className="xl:w-1/2 xl:space-y-3 space-y-1 w-[61%] text-end">
@@ -244,16 +262,17 @@ export default function Fundraisers() {
         )}
       </div>
       {/* fundraisers list */}
-      <div className="p-5">
+      <div className="p-5  ">
         {filteredFundraisers.map((fundraiser) => (
           <div key={fundraiser.id} className="p-4 border rounded-lg mb-4">
             <h2 className="text-xl font-semibold">{fundraiser.name}</h2>
             <p>Category: {fundraiser.category}</p>
             <p>Location: {fundraiser.location}</p>
+            <p className="text-xs text-end">Created on: {formatDate(fundraiser.createdAt)}</p>
           </div>
         ))}
       </div>
-      <div className="p-5">
+      <div className="p-5 flex justify-center items-center">
         <button
           onClick={startFundraiser}
           className="px-4 py-2 bg-blue-500 text-white rounded-full"

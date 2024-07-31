@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { handleSucess } from "../utils/tost";
+import { ToastContainer } from "react-toastify";
 
 function Donation() {
   const [donorType, setDonorType] = useState("");
@@ -8,18 +11,22 @@ function Donation() {
   const [quantity, setQuantity] = useState("");
   const [nearestNGO, setNearestNGO] = useState("");
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Food donation details submitted!");
+    handleSucess("Food donation details submitted! We will contact you within 1 hour.");
+    setTimeout(() => {
+      navigate('/');
+    }, 1000); 
   };
 
   return (
-   <div className=" h-screen bg-gray-100">
+    <div className=" h-screen bg-gray-100">
       <div className="relative overflow-hidden ">
         <img
           src="https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
         />
         <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
         <div className="relative z-10 flex items-center justify-center min-h-screen p-6">
@@ -52,7 +59,9 @@ function Donation() {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-700">Contact Information</label>
+                <label className="block text-gray-700">
+                  Contact Information
+                </label>
                 <input
                   type="text"
                   value={contactInfo}
@@ -95,7 +104,7 @@ function Donation() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded mt-4"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white p-2 rounded mt-4"
               >
                 Submit Donation
               </motion.button>
@@ -103,7 +112,8 @@ function Donation() {
           </motion.div>
         </div>
       </div>
-      </div>
+      <ToastContainer />
+    </div>
   );
 }
 

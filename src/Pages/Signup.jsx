@@ -3,7 +3,7 @@ import { signup } from "../assets";
 import { handlError, handleSucess } from "../utils/tost";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Signup() {
   const [signup, setSignup] = useState({
     username: "",
@@ -33,7 +33,7 @@ function Signup() {
       });
       console.log("Signup successful", response.data);
       const result = response.data;
-  
+
       if (result.user && result.token) {
         handleSucess("Signup successful! Redirecting...");
         setTimeout(() => {
@@ -50,18 +50,17 @@ function Signup() {
       handlError("Something went wrong");
     }
   };
-  
 
   return (
-    <div className="flex flex-col items-center justify-center h-[60vh] bg-[#EEF7F8]">
-      <div className="flex flex-row items-center justify-center w-full">
-        <div className="w-1/2 p-8 hidden xl:block">
-          <div className="flex items-center justify-center h-full">
-            <img src={signup} alt="Sign Up" className="w-full h-auto" />
-          </div>
-        </div>
-        <div className="xl:p-8 bg-zinc-900 shadow-lg rounded-2xl w-[320px] p-5">
-          <h2 className="mb-6 text-2xl font-bold text-center text-white">
+    <div className="flex flex-col items-center justify-center h-[80vh] lg:h-[70vh] bg-zinc-900 relative overflow-hidden">
+      <img
+        src="https://images.pexels.com/photos/7351644/pexels-photo-7351644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        alt="Background"
+        className="absolute inset-0  lg:h-[70vh] h-[80vh]  object-cover blur-sm pointer-events-none"
+      />
+      <div className="flex flex-row items-center justify-around w-full">
+        <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5">
+          <h2 className="mb-6 text-2xl font-bold text-center text-black">
             SIGN UP
           </h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -71,7 +70,7 @@ function Signup() {
               value={signup.username}
               type="text"
               placeholder="Username"
-              className="py-3 rounded-full px-12 outline-none"
+              className="py-3  border-b-2  px-6 outline-none"
             />
             <input
               name="email" // Add the name attribute
@@ -79,7 +78,7 @@ function Signup() {
               onChange={handleChange}
               value={signup.email}
               placeholder="Email ID"
-              className="py-3 rounded-full px-12 outline-none"
+              className="py-3  border-b-2  px-6 outline-none"
             />
             <input
               name="password" // Add the name attribute
@@ -87,7 +86,7 @@ function Signup() {
               onChange={handleChange}
               value={signup.password}
               placeholder="Password"
-              className="py-3 rounded-full px-12 outline-none"
+              className="py-3  border-b-2  px-6 outline-none"
             />
             <button
               type="Submit"
@@ -96,17 +95,31 @@ function Signup() {
               SIGN UP
             </button>
           </form>
-          <div className="flex justify-center mt-4 space-x-4">
-            <button className="p-2 text-black bg-white rounded-full shadow hover:bg-gray-200">
-              <i className="fab fa-google"></i>
-            </button>
-            <button className="p-2 text-black bg-white rounded-full shadow hover:bg-gray-200">
-              <i className="fab fa-facebook"></i>
-            </button>
-            <button className="p-2 text-black bg-white rounded-full shadow hover:bg-gray-200">
-              <i className="fab fa-twitter"></i>
-            </button>
+          <div className="flex justify-start items-start text-white pt-5 text-xs gap-2">
+            <h1 className="text-black">Do you have account?</h1>
+            <Link to={"/login"} className="text-blue-600 cursor-pointer">
+              {" "}
+              Log In
+            </Link>
           </div>
+        </div>
+        <div className=" text-white relative hidden lg:block">
+          <img
+            src="/E_Elyx_02.png"
+            alt=""
+            className="w-[630px] rounded-xl pointer-events-none"
+          />
+          {/* <h1 className="text-lg font-medium">
+            <i>
+              Sustainable development means recognizing that we are stewards of
+              this planet and must work together to provide for future
+              generations. Ending hunger is a cornerstone of achieving true
+              sustainability.
+            </i>
+          </h1>
+          <p className="text-end text-xs text-blue-600 ">
+            Howard G. Buffett
+          </p> */}
         </div>
       </div>
       <ToastContainer />
