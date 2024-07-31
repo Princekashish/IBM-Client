@@ -45,7 +45,7 @@ export default function Fundraisers() {
     const fetchFundraisers = async () => {
       try {
         const response = await axios.get(
-          "https://ibm-server.onrender.com/api/fundraisers/"
+          "https://ibm-server.onrender.com/api/fundraisers"
         );
         const sortedFundraisers = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
