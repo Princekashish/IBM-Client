@@ -31,6 +31,54 @@ import ScrollTop from "./Scrolltop/Scrolltop";
 //     category: "All Types",
 //     location: "Delhi",
 //   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
+//   {
+//     id: 4,
+//     name: "National Hunger Relief Fund",
+//     category: "All Types",
+//     location: "Delhi",
+//   },
 // ];
 
 export default function Fundraisers() {
@@ -137,12 +185,12 @@ export default function Fundraisers() {
           placeholder="Search for Fundraiser"
           value={searchTerm}
           onChange={handleSearch}
-          className="w-full text-start py-3 pl-10 pr-3 rounded-2xl outline-none border border-gray-400 placeholder:text-sm placeholder:text-start placeholder:px-3"
+          className="w-full xl:w-1/2 text-start py-3 pl-10 pr-3 rounded-2xl outline-none border border-gray-400 placeholder:text-sm placeholder:text-start placeholder:px-3"
         />
         <IoSearchOutline className="absolute left-8 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
-      {/* filter */}
-      <div className="p-5 pt-0 relative z-10">
+      {/* Mobile filter */}
+      <div className="p-5 pt-0 relative z-10 xl:hidden">
         <div
           onClick={Filterdata}
           className={`flex border-black justify-end items-center gap-2 pr-3`}
@@ -213,7 +261,7 @@ export default function Fundraisers() {
               {/* filters for mobile */}
               <div>
                 {/* Categories */}
-                <div className="border-b">
+                <div className="border-b ">
                   <div className="flex justify-between p-5 items-center">
                     <h1 className="font-medium">Category</h1>
                     <MdKeyboardArrowUp />
@@ -262,7 +310,7 @@ export default function Fundraisers() {
         )}
       </div>
       {/* fundraisers list */}
-      <div className="p-5  ">
+      <div className="p-5  grid grid-cols-3 gap-10">
         {filteredFundraisers.map((fundraiser) => (
           <div key={fundraiser.id} className="p-4 border rounded-lg mb-4">
             <h2 className="text-xl font-semibold">{fundraiser.name}</h2>

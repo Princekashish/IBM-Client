@@ -80,7 +80,7 @@ function FundraiserForm() {
       transition={{ duration: 0.5 }}
       className=" bg-black/45 h-screen flex justify-center items-center"
     >
-      <ScrollTop/>
+      <ScrollTop />
 
       <div className="rounded-xl bg-white m-10 ">
         <Link to={"/"} className="p-3 text-xs">

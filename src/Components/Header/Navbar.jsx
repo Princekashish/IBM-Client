@@ -66,8 +66,8 @@ function Navbar() {
         <div>
           {loggedInUser ? (
             <div className="flex items-center">
-              <span className="text-[#484848] mr-4">Hello, {loggedInUser}</span>
-              <button onClick={handleLogout}>Logout</button>
+              <span className="text-[#484848] mr-4">{loggedInUser}</span>
+              <button onClick={handleLogout} className="text-red-600 text-sm">Logout</button>
             </div>
           ) : (
             <Link to="/signup">
