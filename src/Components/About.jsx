@@ -8,7 +8,7 @@ export default function About() {
       <h1 className=" text-[#e6511a] md:text-xl text-base font-semibold uppercase leading-[60px] tracking-[3.78px] lg:text-center md:text-center xl:text-sm">
         About us
       </h1>
-      <h1 className=" text-black font-poppins text-2xl font-bold lg:text-center md:text-center xl:pt-3">
+      <h1 className=" text-black font-poppins text-2xl font-bold lg:text-center md:text-center md:mt-2 xl:pt-3">
         Passionate People Making a Difference in the Fight Against Hunger
       </h1>
       <div className="mt-5 flex flex-col justify-center items-center lg:flex-row gap-10 lg:mt-10">

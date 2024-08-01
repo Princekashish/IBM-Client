@@ -165,8 +165,8 @@ export default function Fundraisers() {
     <div className="min-h-screen">
     <ScrollTop/>
       {/* banner */}
-      <div className='bg-[url("/poster.jpg")] bg-cover xl:bg-center bg-[10%] xl:h-[40vh] h-[32vh] bg-no-repeat flex justify-end xl:items-center p-5 xl:p-10'>
-        <div className="xl:w-1/2 xl:space-y-3 space-y-1 w-[61%] text-end">
+      <div className='bg-[url("/poster.jpg")] bg-cover xl:bg-center bg-[10%] xl:h-[40vh] h-[32vh] bg-no-repeat flex justify-end xl:items-center p-5 xl:p-10 md:items-center'>
+        <div className="xl:w-1/2 xl:space-y-3 space-y-1 w-[61%] text-end ">
           <h1 className="text-zinc-900 xl:text-3xl text-lg font-semibold tracking-tighter xl:font-bold xl:tracking-wide xl:leading-8">
             Save Lives Every Month: Join Our Zero Hunger Initiative
           </h1>

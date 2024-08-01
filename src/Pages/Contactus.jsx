@@ -90,7 +90,7 @@ function Contactus() {
         <div className="flex justify-center pt-5 xl:items-start xl:gap-10 ">
           <div>
             <form onSubmit={handleSubmit} className="w-full lg:w-auto">
-              <div className="lg:flex lg:flex-row flex-col xl:flex-col lg:justify-between justify-center lg:gap-3 gap-0">
+              <div className="lg:flex lg:flex-row flex-col xl:flex-col lg:justify-between justify-center lg:gap-3 gap-0 md:gap-2 md:flex ">
                 <label htmlFor="name" className="sr-only">
                   Name*
                 </label>
@@ -130,7 +130,7 @@ function Contactus() {
                   className={`h-12 p-2 lg:mt-0 mt-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full`}
                 />
               </div>
-              <label htmlFor="message" className="sr-only">
+              <label htmlFor="message" className="sr-only ">
                 Enter your message...
               </label>
               <textarea
@@ -142,12 +142,14 @@ function Contactus() {
                 className={`lg:mt-7 mt-2 p-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] xl:w-[454px] sm:w-[400px] w-full lg:h-[291px] h-[150px] `}
               ></textarea>
 
-              <button
-                type="Submit"
-                className="p-2 m-2 rounded-[6px] px-5 text-white bg-orange-600"
-              >
-                Submit
-              </button>
+              <div>
+                <button
+                  type="Submit"
+                  className="p-2 m-2 rounded-[6px] px-5 text-white bg-orange-600"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
           <div className="hidden xl:block xl:b">

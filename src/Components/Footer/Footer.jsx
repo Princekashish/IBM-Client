@@ -2,6 +2,7 @@ import React from "react";
 import { logo } from "../../assets";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -31,18 +32,18 @@ function Footer() {
           <div className=" text-[#979797]  flex flex-col sm:justify-around font-poppins gap-2 text-center" >
             <h1 className="text-sm xl:text-lg  font-semibold text-white">Home</h1>
             <div className="text-xs text-center xl:text-sm  xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3 ">
-              <p>About us</p>
-              <p>Testimonials</p>
-              <p>Contact us</p>
+             <a href="#about">About</a>
+              <Link to={'/education'}>Education</Link>
+              <Link to={'/contact'}>Contactus</Link>
             </div>
           </div>
           {/* connect */}
           <div className=" text-[#979797]  flex flex-col justify-around  font-poppin gap-2  text-center">
             <h1 className="text-sm  xl:text-lg  font-semibold text-white">Connect</h1>
             <div className="text-xs  text-center xl:text-sm xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3">
-              <p>Facebook</p>
-              <p>Instagram</p>
-              <p> LinkedIn</p>
+            <Link to={'#'}>X</Link>
+            <Link to={'#'}>Instagram</Link>
+            <Link to={'#'}>LinkedIn</Link>
             </div>
           </div>
           {/* contact */}
@@ -63,7 +64,7 @@ function Footer() {
        
         <div className="text-white text-[10px] flex gap-5 ">
           <p className="underline">Terms of Service</p>
-          <p className="underline">Privacy Policy </p>
+          <Link to={'https://www.termsfeed.com/live/729191c8-e8b6-457a-be5c-686d8d1dd6cb'} className="underline">Privacy Policy </Link>
         </div>
         <p className="  text-[#979797] xl:text-white text-[14px] xl:text-[10px]">
           © 2024 IBM. All rights reserved.{" "}

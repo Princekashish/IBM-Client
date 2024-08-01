@@ -54,12 +54,15 @@ function Navbar() {
         <div className="lg:flex w-full xl:gap-7">
           {navItems.map((item, index) => (
             <div key={index} className="cursor-pointer text-[#484848]">
-              <Link
-                to={item.link}
-                className="hover:border-b-2 hover:border-black"
-              >
-                {item.name}
-              </Link>
+              {item.link.startsWith("#") ? (
+                <a href={item.link} onClick={() => setToggle(false)}>
+                  {item.name}
+                </a>
+              ) : (
+                <Link to={item.link} onClick={() => setToggle(false)}>
+                  {item.name}
+                </Link>
+              )}
             </div>
           ))}
         </div>
@@ -67,7 +70,9 @@ function Navbar() {
           {loggedInUser ? (
             <div className="flex items-center">
               <span className="text-[#484848] mr-4">{loggedInUser}</span>
-              <button onClick={handleLogout} className="text-red-600 text-sm">Logout</button>
+              <button onClick={handleLogout} className="text-red-600 text-sm">
+                Logout
+              </button>
             </div>
           ) : (
             <Link to="/signup">
@@ -80,6 +85,7 @@ function Navbar() {
         </div>
       </div>
 
+      {/* mobile */}
       <div className="lg:hidden flex items-center justify-between">
         <div>
           <button onClick={() => setToggle((prev) => !prev)}>

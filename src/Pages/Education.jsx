@@ -9,7 +9,7 @@ import ScrollTop from "../Components/Scrolltop/Scrolltop";
 function Education() {
   const Blog = [
     {
-      img:'./pic4.png',
+      img: "./pic4.png",
       title: "Innovative Food Waste Solutions: Community Fridges",
       date: "July 15, 2024",
       author: "Zero Waste Food Initiative",
@@ -17,7 +17,7 @@ function Education() {
         "Community fridges have emerged as a creative solution to tackle food waste and hunger. These publicly accessible refrigerators allow individuals and businesses to donate surplus food, ensuring it reaches those in need. The concept promotes a culture of sharing and reduces the environmental impact of food waste. Cities worldwide are adopting community fridges, fostering local networks of support and sustainability.",
     },
     {
-      img:'./pic3.png',
+      img: "./pic3.png",
       title: "Tech and Sustainability: Apps to Combat Food Waste",
       date: "June 22, 2024",
       author: "Zero Waste Food Initiative",
@@ -25,7 +25,7 @@ function Education() {
         "Technology plays a pivotal role in addressing food waste. Apps like Too Good To Go and Olio connect users with surplus food from restaurants, stores, and individuals, reducing waste and providing affordable food options. These platforms empower communities to take action against food waste, promoting a sustainable lifestyle. The success of these apps highlights the potential of tech-driven solutions in creating a zero-waste future.",
     },
     {
-      img:'./pic6.png',
+      img: "./pic6.png",
       title: "Collaborative Efforts: Restaurants and Zero Waste Practices",
       date: "May 30, 2024",
       author: "Zero Waste Food Initiative",
@@ -36,7 +36,7 @@ function Education() {
 
   return (
     <div className="p-0 ">
-    <ScrollTop/>
+      <ScrollTop />
       <div className="pt-4 pl-3">
         <Link to="/">
           <h1 className=" lg:text-xl text-sm font-semibold flex gap-2 items-center">
@@ -81,27 +81,9 @@ function Education() {
           </div>
           <div className="flex flex-wrap justify-center items-center   p-5 gap-10 xl:p-10">
             <iframe
-              className="lg:w-96 h-[360px] w-full lg:h-52 lg:m-4 lg:p-0 p-2 rounded-2xl"
-              src="https://www.youtube.com/embed/epB33CUpeY8?si=iC3XdZJfMFw8fuco"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-            <iframe
-              className="lg:w-96  lg:h-52   lg:m-4 lg:p-0 p-2 rounded-2xl"
-              src="https://www.youtube.com/embed/pUbwdOmKyLY?si=aOhxcNc-2BL3nslz"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-            <iframe
-              className="lg:w-96   lg:h-52  xl:hidden  lg:m-4 lg:p-0 p-2 rounded-2xl"
-              src="https://www.youtube.com/embed/drGeDmBXNuU?si=bJIMPfSB-Xp7Itpr"
-              title="YouTube video player"
+             className="lg:w-96 h-[360px] w-full lg:h-52 lg:m-4 lg:p-0 p-2 rounded-2xl"
+              src="https://www.youtube.com/embed/t6JhJ9a6G40"
+              title="Donate Stock Footage - Donate Free Stock Videos - Donate No Copyright Videos"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -122,7 +104,6 @@ function Education() {
       {/* blog */}
       <div
         style={{
-        
           backgroundImage: `url(${blogbg})`,
         }}
         className=" p-5 xl:p-10"
@@ -133,16 +114,20 @@ function Education() {
         <div className="flex md:justify-center justify-center lg:gap-8 gap-5 lg:p-6  mt-10 flex-wrap ">
           {Blog.map((items, i) => (
             <div className="p-4 bg-black text-white w-[320px] md:w-[440px] md:h-[566px] xl:w-[340px] xl:h-[620px]   rounded-[20px] space-y-3">
-            <img src={items.img} alt="" className=" w-full lg:h-52 h-30 rounded-2xl" />
-            <p className="lg:text-[13px] text-[8px] lg:my-2 my-1 ">
-              {items.author} | <span className="pl-2">{items.date}</span> 
-            </p>
-            <h1 className="lg:text-[24px] text-[14px] font-semibold">
-             {items.title}
-            </h1>
-            <p className="lg:text-[11px] text-xs lg:py-2 py-1">
-            {items.content}
-            </p>
+              <img
+                src={items.img}
+                alt=""
+                className=" w-full lg:h-52 h-30 rounded-2xl"
+              />
+              <p className="lg:text-[13px] text-[8px] lg:my-2 my-1 ">
+                {items.author} | <span className="pl-2">{items.date}</span>
+              </p>
+              <h1 className="lg:text-[24px] text-[14px] font-semibold">
+                {items.title}
+              </h1>
+              <p className="lg:text-[11px] text-xs lg:py-2 py-1">
+                {items.content}
+              </p>
               <div className="flex justify-start xl:justify-center xl:items-center">
                 <Button
                   msg="Read..."

@@ -10,7 +10,7 @@ function Hero() {
   return (
     <div
       id="home"
-      className="font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[70vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
+      className="font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[80vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
     >
       <ScrollTop />
       <div>

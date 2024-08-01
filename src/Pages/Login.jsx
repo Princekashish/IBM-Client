@@ -63,7 +63,7 @@ function Login() {
         alt="Background"
         className="absolute inset-0 w-full lg:h-[70vh] h-[80vh] object-cover blur-sm pointer-events-none"
       />
-      <div className="flex flex-col-reverse items-center justify-around w-full ">
+      <div className="flex flex-col-reverse xl:flex-row items-center justify-around w-full ">
         <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5">
           <h2 className="mb-6 text-2xl font-bold text-center ">LOG IN</h2>
           <form onSubmit={handleLogin} className="flex flex-col gap-5">
@@ -107,7 +107,7 @@ function Login() {
               sustainability.
             </i>
           </h1>
-          <p className="text-end text-xs text-blue-600 ">Howard G. Buffett</p>
+          <p className="text-end text-sm font-medium text-blue-600 ">Howard G. Buffett</p>
         </div>
       </div>
       <ToastContainer />
