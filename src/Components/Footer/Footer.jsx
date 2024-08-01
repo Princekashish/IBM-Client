@@ -31,7 +31,7 @@ function Footer() {
           {/* home */}
           <div className=" text-[#979797]  flex flex-col sm:justify-around font-poppins gap-2 text-center" >
             <h1 className="text-sm xl:text-lg  font-semibold text-white">Home</h1>
-            <div className="text-xs text-center xl:text-sm  xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3 ">
+            <div className="text-xs flex gap-5 text-center xl:text-sm  xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3 ">
              <a href="#about">About</a>
               <Link to={'/education'}>Education</Link>
               <Link to={'/contact'}>Contactus</Link>
@@ -40,7 +40,7 @@ function Footer() {
           {/* connect */}
           <div className=" text-[#979797]  flex flex-col justify-around  font-poppin gap-2  text-center">
             <h1 className="text-sm  xl:text-lg  font-semibold text-white">Connect</h1>
-            <div className="text-xs  text-center xl:text-sm xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3">
+            <div className="text-xs flex gap-5  text-center xl:text-sm xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3">
             <Link to={'#'}>X</Link>
             <Link to={'#'}>Instagram</Link>
             <Link to={'#'}>LinkedIn</Link>
@@ -49,7 +49,7 @@ function Footer() {
           {/* contact */}
           <div className=" text-[#979797]  flex flex-col sm:justify-around justify-center items-center  font-poppin gap-2">
             <h1 className="text-sm xl:text-lg  font-semibold text-white">Contact us</h1>
-            <div className="text-xs  text-center xl:text-sm xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3">
+            <div className="text-xs flex gap-3 flex-col text-center xl:text-sm xl:flex xl:flex-col xl:justify-start xl:items-start xl:gap-3">
               <p>ZeroWaste@gmail.com</p>
               <p>+91-9711644XXX</p>
               <p>
