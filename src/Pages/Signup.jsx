@@ -4,6 +4,7 @@ import { handlError, handleSucess } from "../utils/tost";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import ScrollTop from "../Components/Scrolltop/Scrolltop";
 function Signup() {
   const [signup, setSignup] = useState({
     username: "",
@@ -53,6 +54,7 @@ function Signup() {
 
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] lg:h-[70vh] bg-zinc-900 relative overflow-hidden">
+    <ScrollTop />
       <img
         src="https://images.pexels.com/photos/7351644/pexels-photo-7351644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt="Background"

@@ -15,7 +15,7 @@ function Sponserss() {
         { img: "./10.svg" },
       ];
   return (
-    <div className="w-full  overflow-x-hidden text-white bg-stone-700 mt-10 ">
+    <div className="w-full  overflow-x-hidden text-white dark:text-[#DFDFD6] bg-stone-700 dark:bg-zinc-900 mt-10 ">
       <div className="flex p-3">
         <motion.div
           initial={{ x: 0 }}

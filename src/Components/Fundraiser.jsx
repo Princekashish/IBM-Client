@@ -312,7 +312,7 @@ export default function Fundraisers() {
       {/* fundraisers list */}
       <div className="p-5  xl:grid xl:grid-cols-3 xl:gap-10">
         {filteredFundraisers.map((fundraiser) => (
-          <div key={fundraiser.id} className="p-4 border rounded-lg mb-4">
+          <div key={fundraiser.id} className="p-4 border rounded-lg mb-4 dark:bg-[#2C2C2B] dark:text-[#DFDFD6]">
             <h2 className="text-xl font-semibold">{fundraiser.name}</h2>
             <p>Category: {fundraiser.category}</p>
             <p>Location: {fundraiser.location}</p>

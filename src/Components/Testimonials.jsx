@@ -33,7 +33,7 @@ export default function Testimonials() {
     <div className="font-poppins p-5 lg:p-10">
       <div className="rounded-2xl h-[486px]">
         <div className="bg-feedback bg-cover bg-center bg-no-repeat h-[586px] rounded-2xl text-center">
-          <h1 className="text-black font-semibold uppercase leading-[60px] tracking-[3.78px] lg:text-[35px] lg:uppercase lg:text-black">
+          <h1 className="text-black dark:text-[#DFDFD6] font-semibold uppercase leading-[60px] tracking-[3.78px] lg:text-[35px] lg:uppercase lg:text-black">
             Testimonials
           </h1>
           <div className="bg-black w-[77px] h-[76px] rounded-full flex justify-center items-center absolute z-10 left-[40%] lg:hidden">
@@ -65,7 +65,7 @@ export default function Testimonials() {
                 {service.map((items, i) => (
                   <SwiperSlide
                     key={i}
-                    className="h-[350px] md:text-xl md:p-10 rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB] pt-5"
+                    className="h-[350px] md:text-xl md:p-10 rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB]  pt-5"
                   >
                     <p className="p-2 text-base tracking-tight font-light mt-5 text-center">
                       {items.feedback}
@@ -94,9 +94,9 @@ export default function Testimonials() {
                 {service.map((items, i) => (
                   <div
                     key={i}
-                    className="h-[350px] rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB] pt-5"
+                    className="h-[350px] rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB] dark:bg-[#2C2C2B] pt-5"
                   >
-                    <p className="p-2 text-base tracking-tight font-light mt-5 text-center">
+                    <p className="p-2 text-base tracking-tight font-light mt-5 text-center dark:text-[#DFDFD6]">
                       {items.feedback}
                     </p>
                     <div className="flex justify-start items-center mt-10 gap-5">
@@ -105,7 +105,7 @@ export default function Testimonials() {
                         alt=""
                         className="rounded-full h-[76px] w-[77px] lg:h-[40px] lg:w-[40px]"
                       />
-                      <div className="flex flex-col justify-start items-start">
+                      <div className="flex flex-col justify-start items-start dark:text-[#DFDFD6]">
                         <h1>{items.name}</h1>
                         <p className="text-xs">{items.place}</p>
                       </div>

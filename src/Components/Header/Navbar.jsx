@@ -5,11 +5,26 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { handleSucess } from "../../utils/tost";
+import { motion } from "framer-motion";
+import { CiDark , CiLight} from "react-icons/ci";
 
 function Navbar() {
   const [toggle, setToggle] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const navigate = useNavigate();
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  };
+
+  
 
   // Effect to update loggedInUser from localStorage
   useEffect(() => {
@@ -37,15 +52,24 @@ function Navbar() {
     { name: "Contact", link: "/contact" },
     { name: "Education", link: "/education" },
   ];
+  //animation
+
+  const variants = {
+    open: {
+      opacity: 1,
+      x: 0,
+    },
+    closed: { opacity: 0, x: "100%" },
+  };
 
   return (
-    <div className="sticky top-0 font-poppins shadow-sm bg-[#EEF7F8] xl:p-5 pl-5 pr-5 p-2 flex justify-between items-center w-full z-20">
+    <div className="dark:bg-zinc-900  sticky top-0 font-poppins  shadow-sm bg-[#EEF7F8] xl:p-5 pl-5 pr-5 p-2 flex justify-between items-center w-full z-20">
       <div>
         <Link to="/">
           <img
             src={logo}
             alt="logo"
-            className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px]"
+            className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
           />
         </Link>
       </div>
@@ -53,7 +77,7 @@ function Navbar() {
       <div className="lg:flex hidden xl:gap-14 xl:items-center ">
         <div className="lg:flex w-full xl:gap-7">
           {navItems.map((item, index) => (
-            <div key={index} className="cursor-pointer text-[#484848]">
+            <div key={index} className="cursor-pointer text-[#484848] dark:text-[#DFDFD6]">
               {item.link.startsWith("#") ? (
                 <a href={item.link} onClick={() => setToggle(false)}>
                   {item.name}
@@ -63,6 +87,7 @@ function Navbar() {
                   {item.name}
                 </Link>
               )}
+
             </div>
           ))}
         </div>
@@ -83,21 +108,27 @@ function Navbar() {
             </Link>
           )}
         </div>
+        <div onClick={toggleDarkMode} className="relative right-6 dark:text-[#DFDFD6]">
+        {darkMode ? <CiLight size={30}/> : <CiDark size={30}/>}
+        </div>
       </div>
 
       {/* mobile */}
       <div className="lg:hidden flex items-center justify-between">
         <div>
           <button onClick={() => setToggle((prev) => !prev)}>
-            {!toggle ? (
-              <GiHamburgerMenu size={30} />
-            ) : (
+            {toggle ? (
               <IoCloseSharp size={30} className="absolute z-10 right-5 top-4" />
+            ) : (
+              <GiHamburgerMenu size={30} />
             )}
           </button>
         </div>
 
-        <div
+        <motion.div
+          animate={toggle ? "open" : "closed"}
+          initial={{x:0,opacity:0}}
+          variants={variants}
           className={`${
             toggle ? "flex" : "hidden"
           } absolute top-0 right-0 left-0 p-5 bg-[#EEF7F8] h-screen flex  flex-col transition-opacity duration-500 ease-in-out`}
@@ -150,7 +181,7 @@ function Navbar() {
               </div>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

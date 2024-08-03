@@ -31,7 +31,7 @@ export default function Service() {
       <h1 className=" text-[#e6511a] md:text-xl md:text-center text-base font-semibold uppercase leading-[60px] tracking-[3.78px] lg:text-center">
         Our services
       </h1>
-      <h1 className="md:text-2xl md:text-center  md:pt-5 text-black font-poppins text-2xl font-bold lg:text-center lg:text-4xl">
+      <h1 className="dark:text-[#DFDFD6] md:text-2xl md:text-center  md:pt-5 text-black font-poppins text-2xl font-bold lg:text-center lg:text-4xl">
         We are in a mission to help
       </h1>
       {/* slider */}
@@ -99,20 +99,20 @@ export default function Service() {
               <div
                 key={i}
                 className={`h-80 rounded-2xl flex flex-col justify-center items-center  ${
-                  i % 2 === 0 ? "bg-[#ECEBEB]" : "bg-[#E6501B]"
+                  i % 2 === 0 ? "bg-[#ECEBEB] dark:bg-[#2C2C2B]" : "bg-[#E6501B]"
                 }`}
               >
                 <div className="flex flex-col justify-center items-center space-y-2">
                   <div
                     className={`rounded-full w-[73px] h-[73px] flex flex-col  justify-center items-center border border-black ${
-                      i % 2 === 0 ? "bg-[#E6501B]" : "bg-[#ECEBEB]"
+                      i % 2 === 0 ? "bg-[#E6501B] dark:bg-white" : "bg-[#ECEBEB]"
                     }`}
                   >
                     <img src={items.img} alt="" />
                   </div>
                   <h1
                     className={` text-black text-[25px] font-bold ${
-                      i % 2 === 0 ? "text-black" : "text-white"
+                      i % 2 === 0 ? "text-black dark:text-[#DFDFD6]" : "text-white"
                     }`}
                   >
                     {items.text}
@@ -120,7 +120,7 @@ export default function Service() {
                 </div>
                 <p
                   className={`p-2 text-sm font-light mt-5 text-center ${
-                    i % 2 === 0 ? "text-black" : "text-white"
+                    i % 2 === 0 ? "text-black dark:text-[#DFDFD6]" : "text-white"
                   }`}
                 >
                   {items.quots}
@@ -131,10 +131,10 @@ export default function Service() {
           </div>
       {/* banner */}
       <div className="h-[450px] lg:h-[340px]  bg-zinc-900 mt-10 rounded-3xl flex flex-col justify-center gap-5 items-start p-5">
-        <h1 className="text-white font-poppins text-4xl font-bold tracking-tighter  leading-10 lg:tracking-wider">
+        <h1 className="text-white dark:text-[#DFDFD6] font-poppins text-4xl font-bold tracking-tighter  leading-10 lg:tracking-wider">
           Why donation is important.....?
         </h1>
-        <p className="text-white text-sm mt-2 font-light md:text-xl xl:text-sm">
+        <p className="text-white dark:text-[#DFDFD6] text-sm mt-2 font-light md:text-xl xl:text-sm">
           Food donations offer numerous benefits, both to the recipients and the
           broader community. They directly combat hunger and food insecurity,
           ensuring that individuals and families in need have access to

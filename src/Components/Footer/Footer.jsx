@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <>
-      <div className="bg-black text-white h-1/2 xl:h-[30vh] p-9  flex  flex-col xl:flex-row xl:justify-around md:flex-row md:justify-around ">
+      <div className="bg-black dark:bg-zinc-900 text-white h-1/2 xl:h-[30vh] p-9  flex  flex-col xl:flex-row xl:justify-around md:flex-row md:justify-around ">
         <div className=" flex justify-between xl:justify-around  md:justify-around xl:flex-col md:flex-col gap-10   md:gap-0 xl:gap-5 ">
           <div>
             <img
@@ -60,7 +60,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="bg-[#2D2D2D] xl:bg-black flex justify-center flex-col xl:flex-col-reverse items-center h-14 p-5 ">
+      <div className="bg-[#2D2D2D] dark:bg-zinc-900 xl:bg-black flex justify-center flex-col xl:flex-col-reverse items-center h-14 p-5 ">
        
         <div className="text-white text-[10px] flex gap-5 ">
           <p className="underline">Terms of Service</p>

@@ -37,7 +37,7 @@ function Education() {
   return (
     <div className="p-0 ">
       <ScrollTop />
-      <div className="pt-4 pl-3">
+      <div className="pt-4 pl-3 dark:text-[#DFDFD6]">
         <Link to="/">
           <h1 className=" lg:text-xl text-sm font-semibold flex gap-2 items-center">
             <FaArrowLeft />
@@ -51,11 +51,11 @@ function Education() {
       {/* marque */}
       <Sponser />
       <div className=" py-9 flex-col justify-start ">
-        <div className="p-5 space-y-5 xl:space-y-10 xl:flex xl:justify-center xl:items-center xl:flex-col">
-          <h1 className="text-2xl font-semibold xl:tracking-widest xl:text-center">
+        <div className="p-5 space-y-5 xl:space-y-10 xl:flex xl:justify-center xl:items-center xl:flex-col ">
+          <h1 className="dark:text-white text-2xl font-semibold xl:tracking-widest xl:text-center">
             IMPORTANCE OF DONATION
           </h1>
-          <p className=" text-sm xl:text-center xl:w-[1052px] xl:tracking-wider xl:leading-8">
+          <p className="dark:text-[#DFDFD6] text-sm xl:text-center xl:w-[1052px] xl:tracking-wider xl:leading-8">
             Donating is a powerful way to make a meaningful impact on the lives
             of those in need, providing you with a profound sense of purpose and
             fulfillment. By contributing, you directly help individuals and

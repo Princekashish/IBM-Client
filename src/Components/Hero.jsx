@@ -5,37 +5,55 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Scrollbar } from "swiper/modules";
 import ScrollTop from "./Scrolltop/Scrolltop";
+import { motion } from "framer-motion";
 
 function Hero() {
+  const smoothVariants = {
+    hidden: { opacity: 0, y: 50 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 1, 
+        staggerChildren:0.3
+      }
+    },
+  };
   return (
     <div
       id="home"
-      className="font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[80vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
+      className=" font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[80vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
     >
       <ScrollTop />
-      <div>
-        <div className="xl:flex xl:flex-col xl:justify-center xl:items-start xl:gap-5 ">
-          <h1 className=" text-black  font-poppins text-4xl lg:text-6xl font-bold text-center lg:text-start  lg:tracking-wider">
+      <motion.div
+      initial="hidden"
+      animate="show"
+      variants={smoothVariants}>
+
+        <motion.div
+       variants={smoothVariants}
+         className="xl:flex xl:flex-col xl:justify-center xl:items-start xl:gap-5 ">
+          <h1 className=" text-black dark:text-[#DFDFD6]  font-poppins text-4xl lg:text-6xl font-bold text-center lg:text-start  lg:tracking-wider">
             Together <br className="lg:hidden" /> We{" "}
             <br className="hidden lg:block" /> Can Feed the{" "}
             <br className="hidden lg:block" />
             Future
           </h1>
-          <h1 className="xl:text-sm p-2 text-black font-poppins lg:w-[441px] text-center lg:text-start  text-sm font-light ">
+          <h1 className="xl:text-sm p-2 dark:text-[#DFDFD6] text-black font-poppins lg:w-[441px] text-center lg:text-start  text-sm font-light ">
             "Together, we can end hunger and make the world a better place. Your
             donation is a powerful act of kindness that feeds hope and nourishes
             communities."
           </h1>
-        </div>
-        <div className="flex xl:justify-start justify-center items-center pt-5  xl:items-start gap-5 lg:justify-start xl:pt-5">
+        </motion.div>
+        <motion.div variants={smoothVariants} className="flex xl:justify-start justify-center items-center pt-5  xl:items-start gap-5 lg:justify-start xl:pt-5">
           <Link
             to={"/donation"}
             className="bg-[#000000] px-28  py-3 lg:py-3 lg:px-7 xl:px-28  xl:hover:bg-[#E6511A] rounded-full text-white font-poppins outline-none duration-300"
           >
             DONATE
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       {/* slider */}
       <div className="w-full max-w-4xl mx-auto lg:hidden">
         <Swiper
