@@ -22,7 +22,7 @@ function Hero() {
   return (
     <div
       id="home"
-      className=" font-poppins  p-5 h-[80vh] md:mt-10   flex justify-start pt-10 md:h-[30vh]   xl:h-[80vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
+      className=" font-poppins  p-5 h-[85vh] md:mt-10   flex justify-start pt-10 md:h-[55vh]   xl:h-[80vh] items-start xl:p-10 xl:gap-10 xl:justify-around gap-10 flex-col xl:flex-row"
     >
       <ScrollTop />
       <motion.div
@@ -58,7 +58,7 @@ function Hero() {
       <div className="w-full max-w-4xl mx-auto lg:hidden">
         <Swiper
           modules={[Navigation, Scrollbar, Autoplay]}
-          spaceBetween={5}
+          spaceBetween={20}
           slidesPerView={1.5}
           centeredSlides={true}
           breakpoints={{
@@ -76,33 +76,40 @@ function Hero() {
           autoplay={{ delay: 8000 }}
           className="w-full"
         >
-          <div className="object-cover">
+          <div className="object-cover ">
             <SwiperSlide className="flex items-center justify-center w-full ">
               <img
-                src="./pic4.png"
+                src="/ozqpJIg6SYi52_z_UanaHQ.webp"
                 alt=""
-                className="h-[220px] md:h-[320px] rounded-xl"
+                className=" rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full  ">
               <img
-                src="./pic9.png"
+                src="/fSHDL8EZQxG7uMrs-sXRqw.webp"
                 alt=""
-                className="h-[220px] md:h-[320px] rounded-xl"
+                className="rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full">
               <img
-                src="./pic3.png"
+                src="/WwwrErcIQ5qufbvEFrZK4Q.jpeg"
                 alt=""
-                className="h-[220px] md:h-[320px] rounded-xl"
+                className="rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
             <SwiperSlide className="flex items-center justify-center w-full">
               <img
-                src="./pic6.png"
+                src="/KCBiRtnhRYqZ2NzRXX-J1A.jpeg"
                 alt=""
-                className="h-[220px] md:h-[320px] rounded-xl"
+                className=" rounded-xl md:h-[720px]"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="flex items-center justify-center w-full">
+              <img
+                src="/WvvYUKmUQJOKZnY63g8l5A.webp"
+                alt=""
+                className=" rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
           </div>

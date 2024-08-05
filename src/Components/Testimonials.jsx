@@ -32,7 +32,7 @@ export default function Testimonials() {
   return (
     <div className="font-poppins p-5 lg:p-10">
       <div className="rounded-2xl h-[486px]">
-        <div className="bg-feedback bg-cover bg-center bg-no-repeat h-[586px] rounded-2xl text-center">
+        <div className=" bg-cover bg-center bg-no-repeat h-[586px] rounded-2xl text-center">
           <h1 className="text-black dark:text-[#DFDFD6] font-semibold uppercase leading-[60px] tracking-[3.78px] lg:text-[35px] lg:uppercase lg:text-black">
             Testimonials
           </h1>
@@ -65,7 +65,7 @@ export default function Testimonials() {
                 {service.map((items, i) => (
                   <SwiperSlide
                     key={i}
-                    className="h-[350px] md:text-xl md:p-10 rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB]  pt-5"
+                    className="h-[370px] md:text-xl md:p-10 rounded-2xl flex flex-col justify-start items-center bg-[#ECEBEB]  pt-5 flex-wrap"
                   >
                     <p className="p-2 text-base tracking-tight font-light mt-5 text-center">
                       {items.feedback}
