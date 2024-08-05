@@ -60,8 +60,8 @@ function Signup() {
         alt="Background"
         className="absolute inset-0  lg:h-[70vh] h-[80vh]  object-cover blur-sm pointer-events-none"
       />
-      <div className="flex flex-row items-center justify-around w-full">
-        <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5">
+      <div className="flex flex-row items-center justify-around w-full ">
+        <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5 ">
           <h2 className="mb-6 text-2xl font-bold text-center text-black">
             SIGN UP
           </h2>

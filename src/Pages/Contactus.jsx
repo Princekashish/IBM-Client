@@ -3,6 +3,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { location, mail, phone } from "../assets";
 import { Link } from "react-router-dom";
 import ScrollTop from "../Components/Scrolltop/Scrolltop";
+import { ToastContainer } from "react-toastify";
 
 function Contactus() {
   const [formData, setFormData] = useState({
@@ -57,7 +58,7 @@ function Contactus() {
       <ScrollTop />
       <div>
         <Link to="/">
-          <h1 className="lg:text-xl text-sm font-semibold flex gap-2 items-center">
+          <h1 className="dark:text-[#DFDFD6] lg:text-xl text-sm font-semibold flex gap-2 items-center">
             <FaArrowLeft />
             Back
           </h1>
@@ -67,15 +68,15 @@ function Contactus() {
         <h1 className="xl:text-3xl text-xl font-medium text-orange-600">
           Contact Us
         </h1>
-        <h2 className="lg:text-3xl text-xl font-sans font-semibold mt-2">
+        <h2 className="dark:text-[#DFDFD6] lg:text-3xl text-xl font-sans font-semibold mt-2">
           We’d love to hear from you
         </h2>
       </div>
 
-      <div className="flex flex-col justify-start p-4 gap-5 mt-7 xl:flex-row xl:justify-center xl:items-center">
+      <div className="dark:text-[#DFDFD6] flex flex-col justify-start p-4 gap-5 mt-7 xl:flex-row xl:justify-center xl:items-center">
         {cardItem.map((item, index) => (
           <div key={index} className="flex items-center gap-3">
-            <img src={item.icon} alt={item.alt} className="xl:w-5 sm:w-5 w-3" />
+            <img src={item.icon} alt={item.alt} className="xl:w-5 sm:w-5 w-3 " />
             <div>
               <h1 className="text-sm ">{item.content}</h1>
             </div>
@@ -84,7 +85,7 @@ function Contactus() {
       </div>
 
       <div className="mt-5">
-        <h1 className="text-lg xl:text-center xl:text-2xl xl:font-semibold">
+        <h1 className="dark:text-[#DFDFD6] text-lg xl:text-center xl:text-2xl xl:font-semibold">
           Drop us a message
         </h1>
         <div className="flex justify-center pt-5 xl:items-start xl:gap-10 ">
@@ -100,7 +101,7 @@ function Contactus() {
                   placeholder="Name*"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`h-12 p-2 bg-[#E8E8E8]  border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full `}
+                  className={`h-12 p-2 bg-[#E8E8E8] dark:bg-zinc-900 dark:text-[#DFDFD6]   border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full `}
                 />
 
                 <label htmlFor="email" className="sr-only">
@@ -113,7 +114,7 @@ function Contactus() {
                   placeholder="Email*"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`h-12 p-2 lg:mt-0 mt-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full `}
+                  className={`h-12 p-2 lg:mt-0 mt-2 dark:bg-zinc-900 dark:text-[#DFDFD6] bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full `}
                 />
               </div>
               <div className="lg:flex lg:flex-row flex-col justify-between lg:gap-3 gap-0 lg:mt-7 mt-2">
@@ -127,7 +128,7 @@ function Contactus() {
                   placeholder="Phone Number*"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`h-12 p-2 lg:mt-0 mt-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full`}
+                  className={`h-12 p-2 lg:mt-0 mt-2 dark:bg-zinc-900 dark:text-[#DFDFD6] bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] lg:w-[450px] sm:w-[400px] w-full`}
                 />
               </div>
               <label htmlFor="message" className="sr-only ">
@@ -139,13 +140,13 @@ function Contactus() {
                 placeholder="Enter your message..."
                 value={formData.message}
                 onChange={handleChange}
-                className={`lg:mt-7 mt-2 p-2 bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] xl:w-[454px] sm:w-[400px] w-full lg:h-[291px] h-[150px] `}
+                className={`lg:mt-7 mt-2 p-2 dark:bg-zinc-900 dark:text-[#DFDFD6] bg-[#E8E8E8] border-2 border-[#838383] rounded-[6px] xl:w-[454px] sm:w-[400px] w-full lg:h-[291px] h-[150px] `}
               ></textarea>
 
               <div>
                 <button
                   type="Submit"
-                  className="p-2 m-2 rounded-[6px] px-5 text-white bg-orange-600"
+                  className="p-2 m-2 rounded-[6px] px-5 dark:text-black dark:bg-white text-white bg-orange-600"
                 >
                   Submit
                 </button>
@@ -161,9 +162,10 @@ function Contactus() {
           </div>
         </div>
         {formSubmitted && (
-          <p className="text-green-500 mt-3">Thank you for your message!</p>
+          <p className="text-green-500 mt-3 text-center">Thank you for your message!</p>
         )}
       </div>
+      <ToastContainer/>
     </div>
   );
 }

@@ -48,7 +48,7 @@ function Hero() {
         <motion.div variants={smoothVariants} className="flex xl:justify-start justify-center items-center pt-5  xl:items-start gap-5 lg:justify-start xl:pt-5">
           <Link
             to={"/donation"}
-            className="bg-[#000000] px-28  py-3 lg:py-3 lg:px-7 xl:px-28  xl:hover:bg-[#E6511A] rounded-full text-white font-poppins outline-none duration-300"
+            className="bg-[#000000] dark:bg-white dark:text-black px-28  py-3 lg:py-3 lg:px-7 xl:px-28  xl:hover:bg-[#E6511A] rounded-full text-white font-poppins outline-none duration-300"
           >
             DONATE
           </Link>

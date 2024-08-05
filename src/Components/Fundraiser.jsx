@@ -185,7 +185,7 @@ export default function Fundraisers() {
           placeholder="Search for Fundraiser"
           value={searchTerm}
           onChange={handleSearch}
-          className="w-full xl:w-1/2 text-start py-3 pl-10 pr-3 rounded-2xl outline-none border border-gray-400 placeholder:text-sm placeholder:text-start placeholder:px-3"
+          className="dark:bg-zinc-900 dark:text-[#DFDFD6] w-full xl:w-1/2 text-start py-3 pl-10 pr-3 rounded-2xl outline-none border border-gray-400 placeholder:text-sm placeholder:text-start placeholder:px-3"
         />
         <IoSearchOutline className="absolute left-8 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
@@ -323,7 +323,7 @@ export default function Fundraisers() {
       <div className="p-5 flex justify-center items-center">
         <button
           onClick={startFundraiser}
-          className="px-4 py-2 bg-blue-500 text-white rounded-full"
+          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
         >
           Start Your Fundraiser
         </button>

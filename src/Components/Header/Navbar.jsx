@@ -13,16 +13,31 @@ function Navbar() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const navigate = useNavigate();
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (darkMode) {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem('darkMode', JSON.stringify(newMode));
+      if (newMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      return newMode;
+    });
   };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   
 
@@ -63,8 +78,16 @@ function Navbar() {
   };
 
   return (
-    <div className="dark:bg-zinc-900  sticky top-0 font-poppins  shadow-sm bg-[#EEF7F8] xl:p-5 pl-5 pr-5 p-2 flex justify-between items-center w-full z-20">
-      <div>
+    <div  className={"dark:bg-zinc-900 sticky top-0 font-poppins  shadow-sm bg-[#EEF7F8] xl:p-5 pl-5 pr-5 p-2 flex justify-between items-center w-full z-20"}>
+      {darkMode? <div>
+        <Link to="/">
+          <img
+            src='/image-removebg-preview (1).png'
+            alt="logo"
+            className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
+          />
+        </Link>
+      </div> : <div>
         <Link to="/">
           <img
             src={logo}
@@ -72,7 +95,7 @@ function Navbar() {
             className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
           />
         </Link>
-      </div>
+      </div>}
 
       <div className="lg:flex hidden xl:gap-14 xl:items-center ">
         <div className="lg:flex w-full xl:gap-7">
@@ -118,12 +141,13 @@ function Navbar() {
         <div>
           <button onClick={() => setToggle((prev) => !prev)}>
             {toggle ? (
-              <IoCloseSharp size={30} className="absolute z-10 right-5 top-4" />
+              <IoCloseSharp size={30} className="absolute z-10 right-5 top-4 dark:text-white" />
             ) : (
-              <GiHamburgerMenu size={30} />
+              <GiHamburgerMenu size={30} className="dark:text-white" />
             )}
           </button>
         </div>
+        
 
         <motion.div
           animate={toggle ? "open" : "closed"}
@@ -131,19 +155,33 @@ function Navbar() {
           variants={variants}
           className={`${
             toggle ? "flex" : "hidden"
-          } absolute top-0 right-0 left-0 p-5 bg-[#EEF7F8] h-screen flex  flex-col transition-opacity duration-500 ease-in-out`}
+          } absolute top-0 right-0 left-0 p-5 dark:bg-zinc-900 bg-[#EEF7F8] h-screen flex  flex-col transition-opacity duration-500 ease-in-out`}
         >
           <div onClick={() => setToggle(false)}>
-            <Link to="/">
-              <img src={logo} alt="logo" className="w-[127px] h-[46px]" />
-            </Link>
+          {darkMode? <div>
+        <Link to="/">
+          <img
+            src='/image-removebg-preview (1).png'
+            alt="logo"
+            className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
+          />
+        </Link>
+      </div> : <div>
+        <Link to="/">
+          <img
+            src={logo}
+            alt="logo"
+            className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
+          />
+        </Link>
+      </div>}
           </div>
 
-          <div className="w-full mt-10 flex  flex-col gap-3 h-full">
+          <div className="w-full mt-10 flex  flex-col gap-3 h-full  ">
             {navItems.map((item, index) => (
               <div
                 key={index}
-                className="text-xl cursor-pointer text-[#484848]"
+                className="text-xl cursor-pointer text-[#484848]  dark:text-[#DFDFD6]"
               >
                 {item.link.startsWith("#") ? (
                   <a href={item.link} onClick={() => setToggle(false)}>
@@ -157,9 +195,9 @@ function Navbar() {
               </div>
             ))}
             {loggedInUser ? (
-              <div className="mt-2 text-xl cursor-pointer text-[#484848] space-x-9">
+              <div className="mt-2 text-xl cursor-pointer text-[#484848] space-x-9 ">
                 <span>{loggedInUser}</span>
-                <button onClick={handleLogout} className="text-red-600 text-sm">
+                <button onClick={handleLogout} className="text-red-600 text-sm ">
                   Logout
                 </button>
               </div>
@@ -167,16 +205,19 @@ function Navbar() {
               <Link
                 to={"/signup"}
                 onClick={() => setToggle(false)}
-                className="mt-2 text-xl cursor-pointer text-[#484848]"
+                className="mt-2 text-xl cursor-pointer text-[#484848] dark:text-[#DFDFD6]"
               >
                 Signup
               </Link>
             )}
+            <div onClick={toggleDarkMode} className="absolute right-5 dark:text-[#DFDFD6]">
+        {darkMode ? <CiLight size={30}/> : <CiDark size={30}/>}
+        </div>
             <Link to={"/donation"} onClick={() => setToggle(false)}>
               <div className="mt-10 flex justify-center items-center">
                 <Button
                   msg="Donate"
-                  className="px-28 py-3 text-white bg-black rounded-full"
+                  className="px-28 py-3 text-white dark:text-black dark:bg-[#DFDFD6] bg-black rounded-full"
                 />
               </div>
             </Link>

@@ -81,7 +81,7 @@ function Education() {
           </div>
           <div className="flex flex-wrap justify-center items-center  p-5 gap-10 xl:p-10">
             <iframe
-             className="lg:w-[70%] h-[360px] w-full lg:h-[50vh] lg:m-4 lg:p-0 p-2 rounded-2xl"
+             className="lg:w-[70%] h-[360px] w-full lg:h-[50vh] lg:m-4 lg:p-0 p-2 rounded-2xl "
               src="https://www.youtube.com/embed/t6JhJ9a6G40"
               title="Donate Stock Footage - Donate Free Stock Videos - Donate No Copyright Videos"
               frameborder="0"
@@ -94,7 +94,7 @@ function Education() {
       </div>
       {/* gallery */}
       <div className="p-5 xl:p-10">
-        <h1 className="text-2xl font-semibold  font-poppins xl:tracking-widest xl:text-center">
+        <h1 className="text-2xl font-semibold  font-poppins xl:tracking-widest xl:text-center dark:text-[#DFDFD6]">
           GALLERY
         </h1>
         <div className="mt-10">
