@@ -193,18 +193,18 @@ export default function Fundraisers() {
       <div className="p-5 pt-0 relative z-10 xl:hidden">
         <div
           onClick={Filterdata}
-          className={`flex border-black justify-end items-center gap-2 pr-3`}
+          className={`flex border-black justify-end items-center gap-2 pr-3 dark:text-[#DFDFD6]`}
         >
-          <h1 className="capitalize">Filter Results</h1>
+          <h1 className="capitalize ">Filter Results</h1>
           <IoFilter />
         </div>
         {filter && (
           <div
-            className={`p-5 border-b bg-black/50 h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}
+            className={`p-5 border-b bg-black/50 h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}  
           >
-            <div className="bg-white h-[65%] absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll">
-              <div className="p-5 bg-white sticky top-0 z-50 border-b flex justify-between items-center">
-                <h1 className="tracking-wide font-medium text-[20px]">
+            <div className="bg-white h-[65%] absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
+              <div className="p-5 bg-white dark:bg-zinc-900 dark:text-[#DFDFD6] sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
+                <h1 className="tracking-wide font-medium text-[20px] ">
                   Filter
                 </h1>
                 <AiOutlineClose
@@ -217,22 +217,22 @@ export default function Fundraisers() {
               </div>
               {/* Selected Filters */}
               {(selectedCategory.length > 0 || selectedLocation.length > 0) && (
-                <div className="p-5 ">
-                  <div className=" flex justify-between items-center">
+                <div className="p-5 dark:bg-zinc-900 dark:text-[#DFDFD6]">
+                  <div className=" flex justify-between items-center  ">
                     <h1 className="font-medium text-xs">Selected Filters:</h1>
                     <button
-                      className=" text-black underline text-xs"
+                      className=" text-black underline text-xs dark:text-[#DFDFD6]"
                       onClick={clearFilters}
                     >
                       Clear All
                     </button>
                   </div>
 
-                  <div className="flex gap-2 flex-wrap mt-2">
+                  <div className="flex gap-2 flex-wrap mt-2  ">
                     {selectedCategory.map((category) => (
                       <div
                         key={category}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full"
+                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
                       >
                         {category}
                         <AiOutlineClose
@@ -245,7 +245,7 @@ export default function Fundraisers() {
                     {selectedLocation.map((location) => (
                       <div
                         key={location}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full"
+                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
                       >
                         {location}
                         <AiOutlineClose
@@ -261,7 +261,7 @@ export default function Fundraisers() {
               {/* filters for mobile */}
               <div>
                 {/* Categories */}
-                <div className="border-b ">
+                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
                   <div className="flex justify-between p-5 items-center">
                     <h1 className="font-medium">Category</h1>
                     <MdKeyboardArrowUp />
@@ -271,7 +271,7 @@ export default function Fundraisers() {
                       (category) => (
                         <h1
                           key={category}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer ${
+                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer  dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
                             selectedCategory.includes(category) && "bg-gray-300"
                           }`}
                           onClick={() => handleCategorySelect(category)}
@@ -283,7 +283,7 @@ export default function Fundraisers() {
                   </div>
                 </div>
                 {/* Locations */}
-                <div className="border-b">
+                <div className="border-b dark:bg-zinc-900 dark:text-[#DFDFD6]">
                   <div className="flex justify-between p-5 items-center">
                     <h1 className="font-medium">Location</h1>
                     <MdKeyboardArrowUp />
@@ -293,7 +293,7 @@ export default function Fundraisers() {
                       (location) => (
                         <h1
                           key={location}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer ${
+                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
                             selectedLocation.includes(location) && "bg-gray-300"
                           }`}
                           onClick={() => handleLocationSelect(location)}
