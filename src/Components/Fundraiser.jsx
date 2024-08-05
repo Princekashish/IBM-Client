@@ -200,10 +200,10 @@ export default function Fundraisers() {
         </div>
         {filter && (
           <div
-            className={`p-5 border-b bg-black/50 h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}  
+            className={`p-5 border-b bg-black/50  h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}  
           >
-            <div className="bg-white h-[65%] absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
-              <div className="p-5 bg-white dark:bg-zinc-900 dark:text-[#DFDFD6] sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
+            <div className="bg-white h-[65%] dark:bg-zinc-900 absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
+              <div className="p-5 bg-white  dark:text-[#DFDFD6] dark:bg-zinc-900 sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
                 <h1 className="tracking-wide font-medium text-[20px] ">
                   Filter
                 </h1>
@@ -283,7 +283,7 @@ export default function Fundraisers() {
                   </div>
                 </div>
                 {/* Locations */}
-                <div className="border-b dark:bg-zinc-900 dark:text-[#DFDFD6]">
+                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
                   <div className="flex justify-between p-5 items-center">
                     <h1 className="font-medium">Location</h1>
                     <MdKeyboardArrowUp />
