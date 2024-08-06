@@ -77,35 +77,35 @@ function Hero() {
           className="w-full"
         >
           <div className="object-cover ">
-            <SwiperSlide className="flex items-center justify-center w-full ">
+            <SwiperSlide className="flex items-center justify-center w-full  ">
               <img
                 src="/ozqpJIg6SYi52_z_UanaHQ.webp"
                 alt=""
                 className=" rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
-            <SwiperSlide className="flex items-center justify-center w-full  ">
+            <SwiperSlide className="flex items-center justify-center w-full loading  ">
               <img
                 src="/fSHDL8EZQxG7uMrs-sXRqw.webp"
                 alt=""
                 className="rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
-            <SwiperSlide className="flex items-center justify-center w-full">
+            <SwiperSlide className="flex items-center justify-center w-full loading">
               <img
                 src="/WwwrErcIQ5qufbvEFrZK4Q.jpeg"
                 alt=""
                 className="rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
-            <SwiperSlide className="flex items-center justify-center w-full">
+            <SwiperSlide className="flex items-center justify-center w-full loading">
               <img
                 src="/KCBiRtnhRYqZ2NzRXX-J1A.jpeg"
                 alt=""
                 className=" rounded-xl md:h-[720px]"
               />
             </SwiperSlide>
-            <SwiperSlide className="flex items-center justify-center w-full">
+            <SwiperSlide className="flex items-center justify-center w-full loading">
               <img
                 src="/WvvYUKmUQJOKZnY63g8l5A.webp"
                 alt=""

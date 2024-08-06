@@ -5,6 +5,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ScrollTop from "./Scrolltop/Scrolltop";
+import Example from "../utils/Shimmer";
 
 // const dummyFundraisers = [
 //   {
@@ -160,10 +161,9 @@ export default function Fundraisers() {
     return new Date(date).toLocaleDateString(undefined, options);
   };
 
-
   return (
     <div className="min-h-screen">
-    <ScrollTop/>
+      <ScrollTop />
       {/* banner */}
       <div className='bg-[url("/poster.jpg")] bg-cover xl:bg-center bg-[10%] xl:h-[40vh] h-[32vh] bg-no-repeat flex justify-end xl:items-center p-5 xl:p-10 md:items-center'>
         <div className="xl:w-1/2 xl:space-y-3 space-y-1 w-[61%] text-end ">
@@ -200,7 +200,7 @@ export default function Fundraisers() {
         </div>
         {filter && (
           <div
-            className={`p-5 border-b bg-black/50  h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}  
+            className={`p-5 border-b bg-black/50  h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}
           >
             <div className="bg-white h-[65%] dark:bg-zinc-900 absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
               <div className="p-5 bg-white  dark:text-[#DFDFD6] dark:bg-zinc-900 sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
@@ -310,16 +310,25 @@ export default function Fundraisers() {
         )}
       </div>
       {/* fundraisers list */}
-      <div className="p-5  xl:grid xl:grid-cols-3 xl:gap-10">
-        {filteredFundraisers.map((fundraiser) => (
-          <div key={fundraiser.id} className="p-4 border rounded-lg mb-4 dark:bg-[#2C2C2B] dark:text-[#DFDFD6]">
-            <h2 className="text-xl font-semibold">{fundraiser.name}</h2>
-            <p>Category: {fundraiser.category}</p>
-            <p>Location: {fundraiser.location}</p>
-            <p className="text-xs text-end">Created on: {formatDate(fundraiser.createdAt)}</p>
-          </div>
-        ))}
-      </div>
+      {fundraisers.length === 0 ? (
+        <Example />
+      ) : (
+        <div className="p-5  xl:grid xl:grid-cols-3 xl:gap-10">
+          {filteredFundraisers.map((fundraiser) => (
+            <div
+              key={fundraiser.id}
+              className="p-4 border rounded-lg mb-4 dark:bg-[#2C2C2B] dark:text-[#DFDFD6]"
+            >
+              <h2 className="text-xl font-semibold">{fundraiser.name}</h2>
+              <p>Category: {fundraiser.category}</p>
+              <p>Location: {fundraiser.location}</p>
+              <p className="text-xs text-end">
+                Created on: {formatDate(fundraiser.createdAt)}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="p-5 flex justify-center items-center">
         <button
           onClick={startFundraiser}
