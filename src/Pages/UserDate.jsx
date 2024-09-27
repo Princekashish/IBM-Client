@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const UserData = () => {
-  const { token } = useOutletContext(); 
+  const { token } = useOutletContext();
   const [fundraisers, setFundraisers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -113,12 +113,12 @@ const UserData = () => {
   }
 
   return (
-    <div className="">
+    <div className="h-screen mt-10">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-200">
         User Fundraisers
       </h2>
       {fundraisers.length === 0 ? (
-        <p className="text-center text-gray-600 dark:text-gray-400">
+        <p className="text-center text-gray-600 dark:text-gray-400 h-screen">
           No fundraisers found for this user.
         </p>
       ) : (
