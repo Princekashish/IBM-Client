@@ -113,7 +113,7 @@ const UserData = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 h-screen">
+    <div className="">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-200">
         User Fundraisers
       </h2>

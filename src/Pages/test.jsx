@@ -13,6 +13,7 @@ export default function Fundraisers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Display 5 fundraisers per page
 
@@ -147,126 +148,7 @@ export default function Fundraisers() {
         />
         <IoSearchOutline className="absolute left-8 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
-      {/* Mobile filter */}
-      <div className="p-5 pt-0 relative z-10 xl:hidden">
-        <div
-          onClick={Filterdata}
-          className={`flex border-black justify-end items-center gap-2 pr-3 dark:text-[#DFDFD6]`}
-        >
-          <h1 className="capitalize ">Filter Results</h1>
-          <IoFilter />
-        </div>
-        {filter && (
-          <div
-            className={`p-5 border-b bg-black/50  h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}
-          >
-            <div className="bg-white h-[65%] dark:bg-zinc-900 absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
-              <div className="p-5 bg-white  dark:text-[#DFDFD6] dark:bg-zinc-900 sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
-                <h1 className="tracking-wide font-medium text-[20px] ">
-                  Filter
-                </h1>
-                <AiOutlineClose
-                  size={20}
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setFilter(!filter);
-                  }}
-                />
-              </div>
-              {/* Selected Filters */}
-              {(selectedCategory.length > 0 || selectedLocation.length > 0) && (
-                <div className="p-5 dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className=" flex justify-between items-center  ">
-                    <h1 className="font-medium text-xs">Selected Filters:</h1>
-                    <button
-                      className=" text-black underline text-xs dark:text-[#DFDFD6]"
-                      onClick={clearFilters}
-                    >
-                      Clear All
-                    </button>
-                  </div>
 
-                  <div className="flex gap-2 flex-wrap mt-2  ">
-                    {selectedCategory.map((category) => (
-                      <div
-                        key={category}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
-                      >
-                        {category}
-                        <AiOutlineClose
-                          size={16}
-                          className="cursor-pointer"
-                          onClick={() => handleCategorySelect(category)}
-                        />
-                      </div>
-                    ))}
-                    {selectedLocation.map((location) => (
-                      <div
-                        key={location}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
-                      >
-                        {location}
-                        <AiOutlineClose
-                          size={16}
-                          className="cursor-pointer"
-                          onClick={() => handleLocationSelect(location)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {/* filters for mobile */}
-              <div>
-                {/* Categories */}
-                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className="flex justify-between p-5 items-center">
-                    <h1 className="font-medium">Category</h1>
-                    <MdKeyboardArrowUp />
-                  </div>
-                  <div className="flex p-5 pt-2 flex-wrap gap-5">
-                    {["All Types", "Trending", "Urgently Foods"].map(
-                      (category) => (
-                        <h1
-                          key={category}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer  dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedCategory.includes(category) && "bg-gray-300"
-                          }`}
-                          onClick={() => handleCategorySelect(category)}
-                        >
-                          {category}
-                        </h1>
-                      )
-                    )}
-                  </div>
-                </div>
-                {/* Locations */}
-                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className="flex justify-between p-5 items-center">
-                    <h1 className="font-medium">Location</h1>
-                    <MdKeyboardArrowUp />
-                  </div>
-                  <div className="flex p-5 pt-2 flex-wrap gap-5">
-                    {["All Locations", "Delhi", "Bengaluru", "Hyderabad"].map(
-                      (location) => (
-                        <h1
-                          key={location}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedLocation.includes(location) && "bg-gray-300"
-                          }`}
-                          onClick={() => handleLocationSelect(location)}
-                        >
-                          {location}
-                        </h1>
-                      )
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
       {/* fundraisers list */}
       {fundraisers.length === 0 ? (
         <Example />
@@ -287,6 +169,7 @@ export default function Fundraisers() {
           ))}
         </div>
       )}
+
       {/* Pagination controls */}
       <div className="p-5 flex justify-between items-center">
         <button
@@ -307,16 +190,6 @@ export default function Fundraisers() {
           Next
         </button>
       </div>
-
-     <div className="flex justify-center items-center">
-     <button
-          onClick={startFundraiser}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
-        >
-          startFundraiser
-        </button>
-     </div>
     </div>
   );
 }
