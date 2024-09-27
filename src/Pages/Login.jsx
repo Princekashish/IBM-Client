@@ -58,13 +58,9 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center lg:h-[70vh] h-[80vh] bg-zinc-900 relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center lg:h-[70vh] h-[80vh]  relative overflow-hidden">
     <ScrollTop />
-      <img
-        src="https://images.pexels.com/photos/7351644/pexels-photo-7351644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        alt="Background"
-        className="absolute inset-0 w-full lg:h-[70vh] h-[80vh] object-cover blur-sm pointer-events-none"
-      />
+     
       <div className="flex flex-col-reverse xl:flex-row items-center justify-around w-full ">
         <div className="xl:p-8 bg-white backdrop-blur-lg inset-1 shadow-lg rounded-2xl w-[320px] p-5">
           <h2 className="mb-6 text-2xl font-bold text-center ">LOG IN</h2>

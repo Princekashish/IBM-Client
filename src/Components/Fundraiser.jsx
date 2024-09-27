@@ -2,85 +2,10 @@ import React, { useEffect, useState } from "react";
 import { IoSearchOutline, IoFilter } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import ScrollTop from "./Scrolltop/Scrolltop";
 import Example from "../utils/Shimmer";
-
-// const dummyFundraisers = [
-//   {
-//     id: 1,
-//     name: "Hunger Relief in Delhi",
-//     category: "Trending",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 2,
-//     name: "Feeding Bengaluru's Needy",
-//     category: "Urgently Foods",
-//     location: "Bengaluru",
-//   },
-//   {
-//     id: 3,
-//     name: "Support for Hyderabad's Hungry",
-//     category: "Trending",
-//     location: "Hyderabad",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-//   {
-//     id: 4,
-//     name: "National Hunger Relief Fund",
-//     category: "All Types",
-//     location: "Delhi",
-//   },
-// ];
 
 export default function Fundraisers() {
   const [fundraisers, setFundraisers] = useState([]);
@@ -88,25 +13,41 @@ export default function Fundraisers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Display 5 fundraisers per page
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchFundraisers = async () => {
       try {
         const response = await axios.get(
-          "https://ibm-server.onrender.com/api/fundraisers"
+          `https://ibm-server.onrender.com/api/fundraisers?page=${currentPage}&limit=${itemsPerPage}`
         );
         const sortedFundraisers = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setFundraisers(sortedFundraisers);
+        
+        // Update URL with current page
+        navigate(`/fundraisers?page=${currentPage}`, { replace: true });
       } catch (err) {
         console.error("Error fetching fundraisers:", err);
       }
     };
 
     fetchFundraisers();
-  }, []);
+  }, [currentPage, navigate]);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const page = searchParams.get('page');
+    if (page) {
+      setCurrentPage(parseInt(page));
+    }
+  }, [location]);
 
   const Filterdata = () => {
     setFilter(!filter);
@@ -161,6 +102,24 @@ export default function Fundraisers() {
     return new Date(date).toLocaleDateString(undefined, options);
   };
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredFundraisers.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedFundraisers = filteredFundraisers.slice(startIndex, endIndex);
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <ScrollTop />
@@ -189,132 +148,13 @@ export default function Fundraisers() {
         />
         <IoSearchOutline className="absolute left-8 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
-      {/* Mobile filter */}
-      <div className="p-5 pt-0 relative z-10 xl:hidden">
-        <div
-          onClick={Filterdata}
-          className={`flex border-black justify-end items-center gap-2 pr-3 dark:text-[#DFDFD6]`}
-        >
-          <h1 className="capitalize ">Filter Results</h1>
-          <IoFilter />
-        </div>
-        {filter && (
-          <div
-            className={`p-5 border-b bg-black/50  h-screen fixed rounded-t-3xl bottom-0 left-0 right-0`}
-          >
-            <div className="bg-white h-[65%] dark:bg-zinc-900 absolute bottom-0 left-0 right-0 rounded-t-3xl overflow-y-scroll ">
-              <div className="p-5 bg-white  dark:text-[#DFDFD6] dark:bg-zinc-900 sticky top-0 z-50 border-b dark:border-none flex justify-between items-center ">
-                <h1 className="tracking-wide font-medium text-[20px] ">
-                  Filter
-                </h1>
-                <AiOutlineClose
-                  size={20}
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setFilter(!filter);
-                  }}
-                />
-              </div>
-              {/* Selected Filters */}
-              {(selectedCategory.length > 0 || selectedLocation.length > 0) && (
-                <div className="p-5 dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className=" flex justify-between items-center  ">
-                    <h1 className="font-medium text-xs">Selected Filters:</h1>
-                    <button
-                      className=" text-black underline text-xs dark:text-[#DFDFD6]"
-                      onClick={clearFilters}
-                    >
-                      Clear All
-                    </button>
-                  </div>
 
-                  <div className="flex gap-2 flex-wrap mt-2  ">
-                    {selectedCategory.map((category) => (
-                      <div
-                        key={category}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
-                      >
-                        {category}
-                        <AiOutlineClose
-                          size={16}
-                          className="cursor-pointer"
-                          onClick={() => handleCategorySelect(category)}
-                        />
-                      </div>
-                    ))}
-                    {selectedLocation.map((location) => (
-                      <div
-                        key={location}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-200 rounded-full dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6]"
-                      >
-                        {location}
-                        <AiOutlineClose
-                          size={16}
-                          className="cursor-pointer"
-                          onClick={() => handleLocationSelect(location)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {/* filters for mobile */}
-              <div>
-                {/* Categories */}
-                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className="flex justify-between p-5 items-center">
-                    <h1 className="font-medium">Category</h1>
-                    <MdKeyboardArrowUp />
-                  </div>
-                  <div className="flex p-5 pt-2 flex-wrap gap-5">
-                    {["All Types", "Trending", "Urgently Foods"].map(
-                      (category) => (
-                        <h1
-                          key={category}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer  dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedCategory.includes(category) && "bg-gray-300"
-                          }`}
-                          onClick={() => handleCategorySelect(category)}
-                        >
-                          {category}
-                        </h1>
-                      )
-                    )}
-                  </div>
-                </div>
-                {/* Locations */}
-                <div className="border-b dark:border-none dark:bg-zinc-900 dark:text-[#DFDFD6]">
-                  <div className="flex justify-between p-5 items-center">
-                    <h1 className="font-medium">Location</h1>
-                    <MdKeyboardArrowUp />
-                  </div>
-                  <div className="flex p-5 pt-2 flex-wrap gap-5">
-                    {["All Locations", "Delhi", "Bengaluru", "Hyderabad"].map(
-                      (location) => (
-                        <h1
-                          key={location}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedLocation.includes(location) && "bg-gray-300"
-                          }`}
-                          onClick={() => handleLocationSelect(location)}
-                        >
-                          {location}
-                        </h1>
-                      )
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
       {/* fundraisers list */}
       {fundraisers.length === 0 ? (
         <Example />
       ) : (
         <div className="p-5  xl:grid xl:grid-cols-3 xl:gap-10">
-          {filteredFundraisers.map((fundraiser) => (
+          {paginatedFundraisers.map((fundraiser) => (
             <div
               key={fundraiser.id}
               className="p-4 border rounded-lg mb-4 dark:bg-[#2C2C2B] dark:text-[#DFDFD6]"
@@ -329,12 +169,25 @@ export default function Fundraisers() {
           ))}
         </div>
       )}
-      <div className="p-5 flex justify-center items-center">
+
+      {/* Pagination controls */}
+      <div className="p-5 flex justify-between items-center">
         <button
-          onClick={startFundraiser}
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1}
           className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
         >
-          Start Your Fundraiser
+          Previous
+        </button>
+        <span className="dark:text-[#DFDFD6]">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
+        >
+          Next
         </button>
       </div>
     </div>

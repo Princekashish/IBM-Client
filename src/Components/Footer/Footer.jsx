@@ -25,7 +25,7 @@ function Footer() {
 
         </div>
         <div className=" flex justify-center items-center ">
-            <img src="./E_GIF_02.gif" alt="" className="h-[120px] rounded-xl hidden xl:block"/>
+            
           </div>
         <div className=" flex flex-col xl:flex-row md:flex-row justify-center xl:justify-start xl:items-start items-center mt-10 gap-5 xl:gap-10 md:gap-10 md:justify-start md:items-start">
           {/* home */}

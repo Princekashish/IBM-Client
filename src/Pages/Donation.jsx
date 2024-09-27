@@ -10,7 +10,6 @@ function Donation() {
   const [foodType, setFoodType] = useState("");
   const [quantity, setQuantity] = useState("");
   const [nearestNGO, setNearestNGO] = useState("");
-
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();

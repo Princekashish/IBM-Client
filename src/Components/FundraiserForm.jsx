@@ -42,7 +42,7 @@ function FundraiserForm() {
 
     try {
       const response = await axios.post(
-        "https://ibm-server.onrender.com/api/fundraisers/create",
+        "http://ibm-server.onrender.com/api/fundraisers/create",
         formData,
         {
           headers: {
