@@ -17,7 +17,7 @@ const UserData = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://ibm-server.onrender.com/api/fundraisers/user",
+        "https://ibm-server.onrender.com/api/fundraisers/user",
         {
           headers: {
             Authorization: `${token}`, // Use the token with 'Bearer' prefix
@@ -56,7 +56,7 @@ const UserData = () => {
       console.log("Updated Fundraiser ID:", updatedFundraiser._id);
 
       const response = await axios.put(
-        `http://ibm-server.onrender.com/api/fundraisers/${updatedFundraiser._id}`,
+        `https://ibm-server.onrender.com/api/fundraisers/${updatedFundraiser._id}`,
         updatedFundraiser,
         {
           headers: {
@@ -81,7 +81,7 @@ const UserData = () => {
   const handleDeleteClick = async (id) => {
     try {
       const response = await axios.delete(
-        `http://ibm-server.onrender.com/api/fundraisers/${id}`,
+        `https://ibm-server.onrender.com/api/fundraisers/${id}`,
         {
           headers: {
             Authorization: `${token}`,
