@@ -103,8 +103,8 @@ function Navbar() {
           <Link to="/">
             <img
               src="/image-removebg-preview (1).png"
-              alt="logo"
-              className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
+              alt={logo}
+              className="xl:w-[100px] xl:h-[56px] w-[100px] h-[46px] "
             />
           </Link>
         </div>
@@ -114,7 +114,7 @@ function Navbar() {
             <img
               src={logo}
               alt="logo"
-              className="xl:w-[167px] xl:h-[56px] w-[127px] h-[46px] "
+              className="xl:w-[100px] xl:h-[56px] w-[100px] h-[46px] "
             />
           </Link>
         </div>
