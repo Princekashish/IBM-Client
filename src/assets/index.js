@@ -1,4 +1,4 @@
-import logo from "./logo.png"
+import logo from "./logo.jpg"
 import location from "./location.svg"
 import mail from "./mail.svg"
 import phone from "./phone.svg"
