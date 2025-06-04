@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { IoSearchOutline, IoFilter } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
@@ -29,7 +29,7 @@ export default function Fundraisers() {
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         setFundraisers(sortedFundraisers);
-        
+
         // Update URL with current page
         navigate(`/fundraisers?page=${currentPage}`, { replace: true });
       } catch (err) {
@@ -77,15 +77,17 @@ export default function Fundraisers() {
     setSelectedLocation([]);
   };
 
-  const filteredFundraisers = fundraisers.filter((fundraiser) => {
-    return (
-      (selectedCategory.length === 0 ||
-        selectedCategory.includes(fundraiser.category)) &&
-      (selectedLocation.length === 0 ||
-        selectedLocation.includes(fundraiser.location)) &&
-      fundraiser.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+  const filteredFundraisers = useMemo(() => {
+    return fundraisers.filter((fundraiser) => {
+      return (
+        (selectedCategory.length === 0 ||
+          selectedCategory.includes(fundraiser.category)) &&
+        (selectedLocation.length === 0 ||
+          selectedLocation.includes(fundraiser.location)) &&
+        fundraiser.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+  }, [fundraisers, selectedCategory, selectedLocation, searchTerm]);
 
   const startFundraiser = () => {
     const token = localStorage.getItem("token");
@@ -105,7 +107,9 @@ export default function Fundraisers() {
   const totalPages = Math.ceil(filteredFundraisers.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedFundraisers = filteredFundraisers.slice(startIndex, endIndex);
+  const paginatedFundraisers = useMemo(() => {
+    return filteredFundraisers.slice(startIndex, endIndex);
+  }, [filteredFundraisers, startIndex, endIndex]);
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
@@ -225,13 +229,12 @@ export default function Fundraisers() {
                     <MdKeyboardArrowUp />
                   </div>
                   <div className="flex p-5 pt-2 flex-wrap gap-5">
-                    {["All Types", "Trending", "Urgently Foods"].map(
+                    {["All Types", "Trending", "urgent"].map(
                       (category) => (
                         <h1
                           key={category}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer  dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedCategory.includes(category) && "bg-gray-300"
-                          }`}
+                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer  dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${selectedCategory.includes(category) && "bg-gray-300"
+                            }`}
                           onClick={() => handleCategorySelect(category)}
                         >
                           {category}
@@ -251,9 +254,8 @@ export default function Fundraisers() {
                       (location) => (
                         <h1
                           key={location}
-                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${
-                            selectedLocation.includes(location) && "bg-gray-300"
-                          }`}
+                          className={`bg-[#F5F4F4] rounded-full px-3 py-2 cursor-pointer dark:bg-zinc-900 dark:text-[#DFDFD6] dark:border dark:border-[#DFDFD6] ${selectedLocation.includes(location) && "bg-gray-300"
+                            }`}
                           onClick={() => handleLocationSelect(location)}
                         >
                           {location}
@@ -292,7 +294,7 @@ export default function Fundraisers() {
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
+          className="px-4 py-2 bg-black/80 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
         >
           Previous
         </button>
@@ -302,21 +304,21 @@ export default function Fundraisers() {
         <button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
+          className="px-4 py-2 bg-black/80 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
         >
           Next
         </button>
       </div>
 
-     <div className="flex justify-center items-center">
-     <button
+      <div className="flex justify-center items-center mb-10">
+        <button
           onClick={startFundraiser}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
+          disabled={currentPage === totalPages - 1}
+          className="px-4 py-2 bg-[#E6501B] dark:text-black dark:bg-[#DFDFD6] text-white rounded-full"
         >
           startFundraiser
         </button>
-     </div>
+      </div>
     </div>
   );
 }
